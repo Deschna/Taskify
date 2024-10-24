@@ -34,6 +34,8 @@ public class ProjectController {
 
     @GetMapping("/all")
     public List<ProjectRespDto> getAllProjects() {
-        return projectService.getAllProjects().stream().map(ProjectMapper.INSTANCE::modelToRespDto).toList();
+        return projectService.getAllProjects().stream()
+                .map(ProjectMapper.INSTANCE::modelToRespDto)
+                .toList();
     }
 }
