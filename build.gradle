@@ -42,6 +42,8 @@ dependencies {
     annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
 
     checkstyle "com.puppycrawl.tools:checkstyle:${checkstyle.toolVersion}"
+
+    testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
 tasks.check.dependsOn checkstyleMain
