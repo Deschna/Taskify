@@ -16,4 +16,5 @@ jobs:
           cache: gradle
       - name: Build with Gradle
         run: ./gradlew build --info --stacktrace
-        
+        env:
+          SPRING_PROFILES_ACTIVE: test
