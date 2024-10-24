@@ -45,3 +45,7 @@ dependencies {
 }
 
 tasks.check.dependsOn checkstyleMain
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
