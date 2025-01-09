@@ -2,6 +2,7 @@ package org.example.taskify.dto.response;
 
 import java.time.LocalDate;
 import lombok.Data;
+import org.example.taskify.model.Project;
 
 @Data
 public class ProjectResponseDto {
@@ -10,5 +11,5 @@ public class ProjectResponseDto {
     private String description;
     private LocalDate startDate;
     private LocalDate endDate;
-    private String status;
+    private Project.Status status;
 }
