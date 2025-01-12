@@ -1,5 +1,6 @@
 package org.example.taskify.controller;
 
+import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.example.taskify.dto.request.ProjectRequestDto;
@@ -24,7 +25,9 @@ public class ProjectController {
 
     @PostMapping("/initiate")
     @ResponseStatus(HttpStatus.CREATED)
-    public ProjectResponseDto initiateProject(@RequestBody ProjectRequestDto projectRequestDto) {
+    public ProjectResponseDto initiateProject(
+            @RequestBody @Valid ProjectRequestDto projectRequestDto
+    ) {
         return projectService.initiateProject(projectRequestDto);
     }
 
@@ -44,7 +47,7 @@ public class ProjectController {
     @ResponseStatus(HttpStatus.OK)
     public ProjectResponseDto updateProjectById(
             @PathVariable Long id,
-            @RequestBody ProjectRequestDto projectRequestDto
+            @RequestBody @Valid ProjectRequestDto projectRequestDto
     ) {
         return projectService.updateProject(id, projectRequestDto);
     }
