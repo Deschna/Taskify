@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import org.example.taskify.exception.EntityNotFoundException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
+import org.springframework.data.mapping.PropertyReferenceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -26,6 +27,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<Object> handleEntityNotFoundException(EntityNotFoundException ex) {
         return buildErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage());
+    }
+
+    @ExceptionHandler(PropertyReferenceException.class)
+    public ResponseEntity<Object> handlePropertyReferenceException(PropertyReferenceException ex) {
+        return buildErrorResponse(HttpStatus.BAD_REQUEST, ex.getMessage());
     }
 
     @ExceptionHandler(Exception.class)

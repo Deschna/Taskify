@@ -9,6 +9,7 @@ import org.example.taskify.exception.EntityNotFoundException;
 import org.example.taskify.model.Project;
 import org.example.taskify.repository.ProjectRepository;
 import org.example.taskify.service.ProjectService;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -31,8 +32,10 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public List<ProjectResponseDto> getAllProjects() {
-        return projectRepository.findAll().stream().map(projectMapper::modelToResponseDto).toList();
+    public List<ProjectResponseDto> getAllProjects(Pageable pageable) {
+        return projectRepository.findAll(pageable).stream()
+                .map(projectMapper::modelToResponseDto)
+                .toList();
     }
 
     @Override
